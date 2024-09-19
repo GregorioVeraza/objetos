@@ -1,0 +1,67 @@
+	public Mamifero getAbueloMaterno()
+	{
+		if ((this.getPadre() !=null) && (this.getMadre() != null)) {
+			return this.getMadre().getPadre();
+			} else {
+				return null;
+			}
+		
+	}
+	public Mamifero getAbueloPaterno()
+	{
+		if ((this.getPadre() !=null) && (this.getMadre() != null)) {
+			return this.getPadre().getPadre();
+			} else {
+				return null;
+			}
+		
+	}
+	public Mamifero getAbuelaMaterna()
+	{
+		if ((this.getPadre() !=null) && (this.getMadre() != null)) {
+			return this.getMadre().getMadre();
+			} else {
+				return null;
+			}
+		
+	}
+	
+	public Mamifero getAbuelaPaterna()
+	{
+		if ((this.getPadre() !=null) && (this.getMadre() != null)) {
+		return this.getPadre().getMadre();
+		} else {
+			return null;
+		}
+	}
+	private boolean esHoja(Mamifero m) {
+		boolean es = true;
+		if ((m.getPadre() != null) && (m.getMadre() != null)) {
+			es = false;
+		}
+		return es;
+	}
+	
+	public boolean tieneComoAncestroA(Mamifero unMamifero) {
+		System.out.println(unMamifero.identificador);
+		System.out.println(this.identificador);
+		System.out.println();
+			if ((this.getPadre() != null) && (this.getMadre() != null)){
+				if (this.getPadre().equals(unMamifero) || (this.getMadre().equals(unMamifero))) {
+					return true;
+				}
+				else {
+					return this.getPadre().tieneComoAncestroA(unMamifero ) || this.getMadre().tieneComoAncestroA(unMamifero);
+				}
+			}
+			/*if (this.getMadre() != null) {
+				if (this.getMadre().equals(unMamifero)) {
+					return true;
+				} else {
+					return this.getMadre().tieneComoAncestroA(unMamifero);
+				}
+			}*/
+			return false;
+	}
+	
+}
